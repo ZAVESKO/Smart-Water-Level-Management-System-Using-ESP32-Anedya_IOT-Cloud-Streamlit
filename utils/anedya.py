@@ -173,7 +173,7 @@ def fetchHumidityData() -> pd.DataFrame:
 
 
 @st.cache_data(ttl=30, show_spinner=False)
-def fetchwater-levelData() -> pd.DataFrame:
+def fetchwaterlevelData() -> pd.DataFrame:
     url = "https://api.anedya.io/v1/aggregates/variable/byTime"
     apiKey_in_formate = "Bearer " + apiKey
 
@@ -182,7 +182,7 @@ def fetchwater-levelData() -> pd.DataFrame:
 
     payload = json.dumps(
         {
-            "variable": "water-level",
+            "variable": "waterlevel",
             "from": pastHour_Time,
             "to": currentTime,
             "config": {
