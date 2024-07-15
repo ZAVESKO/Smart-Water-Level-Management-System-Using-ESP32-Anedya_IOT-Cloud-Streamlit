@@ -107,9 +107,9 @@ def drawDashboard():
     st.subheader(body="Current water level", anchor=False)
     cols = st.columns(2, gap="medium")
     with cols[0]:
-        st.metric(label="Water Level", value=str(st.session_state.CurrentHumidity) + " 6.25 cm")
+        st.metric(label="Water Level", value=str(st.session_state.CurrentHumidity) + "6.25 cm")
     with cols[1]:
-        st.metric(label="Water Level", value=str(st.session_state.CurrentTemperature) + " 12.79 cm")
+        st.metric(label="Water Level", value=str(st.session_state.CurrentTemperature) + "9.79 cm")
     # with cols[2]:
     #    st.metric(label="Refresh Count", value=count)
 
