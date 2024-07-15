@@ -60,7 +60,7 @@ def main():
         drawLogin()
     else:
         humidityData = fetchHumidityData()
-        water-levelData = fetchwaterlevelData()
+        waterlevelData = fetchwaterlevelData()
 
         GetFanStatus()
         GetLightStatus()
