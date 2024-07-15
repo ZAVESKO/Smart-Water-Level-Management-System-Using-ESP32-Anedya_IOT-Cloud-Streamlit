@@ -107,9 +107,9 @@ def drawDashboard():
     st.subheader(body="Current Status", anchor=False)
     cols = st.columns(2, gap="medium")
     with cols[0]:
-        st.metric(label="Humidity", value=str(st.session_state.CurrentHumidity) + " %")
+        st.metric(label="Water Level", value=str(st.session_state.CurrentHumidity) + " %")
     with cols[1]:
-        st.metric(label="Temperature", value=str(st.session_state.CurrentTemperature) + "  °C")
+        st.metric(label="Water Level", value=str(st.session_state.CurrentTemperature) + "  °C")
     # with cols[2]:
     #    st.metric(label="Refresh Count", value=count)
 
@@ -123,7 +123,7 @@ def drawDashboard():
 
     charts = st.columns(2, gap="small")
     with charts[0]:
-        st.subheader(body="Water Level ", anchor=False)
+        st.subheader(body="Humidity ", anchor=False)
         if humidityData.empty:
             st.write("No Data Available!")
         else:
