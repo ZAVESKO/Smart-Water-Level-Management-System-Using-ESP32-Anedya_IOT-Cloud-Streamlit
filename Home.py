@@ -138,7 +138,7 @@ def drawDashboard():
             y=alt.Y(
                 "aggregate:Q",
                 scale=alt.Scale(domain=[20, 60]),
-                axis=alt.Axis(title="Humidity (%)", grid=True, tickCount=10),
+                axis=alt.Axis(title="Waterlevel (cm)", grid=True, tickCount=10),
             ),  # Q indicates quantitative data
             tooltip=[alt.Tooltip('Datetime:T', format="%Y-%m-%d %H:%M:%S", title="Time",),
                     alt.Tooltip('aggregate:Q', format="0.2f", title="Value")],
