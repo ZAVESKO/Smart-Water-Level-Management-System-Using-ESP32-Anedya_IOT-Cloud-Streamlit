@@ -7,8 +7,7 @@ from utils.anedya import anedya_config
 from utils.anedya import anedya_sendCommand
 from utils.anedya import anedya_getValue
 from utils.anedya import anedya_setValue
-from utils.anedya import fetchHumidityData
-from utils.anedya import fetchTemperatureData
+from utils.anedya import fetchwater-levelData
 
 nodeId = "NODE-ID"  # get it from anedya dashboard -> project -> node 
 apiKey = "YOUR-API-KEY"  # aneyda project apikey
@@ -27,13 +26,13 @@ def V_SPACE(lines):
 
 
 humidityData = pd.DataFrame()
-temperatureData = pd.DataFrame()
+water-levelData = pd.DataFrame()
 
 
 def main():
 
     anedya_config(nodeId, apiKey)
-    global humidityData, temperatureData
+    global humidityData, water-levelData
 
     # Initialize the log in state if does not exist
     if "LoggedIn" not in st.session_state:
@@ -54,14 +53,14 @@ def main():
     if "CurrentHumidity" not in st.session_state:
         st.session_state.CurrentHumidity = 0
 
-    if "CurrentTemperature" not in st.session_state:
-        st.session_state.CurrentTemperature = 0
+    if "Currentwater-level" not in st.session_state:
+        st.session_state.Currentwater-level = 0
 
     if st.session_state.LoggedIn is False:
         drawLogin()
     else:
         humidityData = fetchHumidityData()
-        temperatureData = fetchTemperatureData()
+        water-levelData = fetchwater-levelData()
 
         GetFanStatus()
         GetLightStatus()
@@ -109,7 +108,7 @@ def drawDashboard():
     with cols[0]:
         st.metric(label="Humidity", value=str(st.session_state.CurrentHumidity) + " %")
     with cols[1]:
-        st.metric(label="Temperature", value=str(st.session_state.CurrentTemperature) + "  °C")
+        st.metric(label="water-level", value=str(st.session_state.Currentwater-level) + "  °C")
     # with cols[2]:
     #    st.metric(label="Refresh Count", value=count)
 
@@ -158,11 +157,11 @@ def drawDashboard():
             st.altair_chart(humidity_chart_an, use_container_width=True)
 
     with charts[1]:
-        st.subheader(body="Temperature", anchor=False)
-        if temperatureData.empty:
+        st.subheader(body="water-level", anchor=False)
+        if water-levelData.empty:
             st.write("No Data Available!")
         else:
-            temperature_chart_an = alt.Chart(data=temperatureData).mark_area(
+            water-level_chart_an = alt.Chart(data=water-levelData).mark_area(
                 line={'color': '#1fa2ff'},
                 color=alt.Gradient(
                     gradient='linear',
@@ -184,13 +183,13 @@ def drawDashboard():
                     "aggregate:Q",
                     # scale=alt.Scale(domain=[0, 100]),
                     scale=alt.Scale(zero=False, domain=[10, 50]),
-                    axis=alt.Axis(title="Temperature (°C)", grid=True, tickCount=10),
+                    axis=alt.Axis(title="water-level (°C)", grid=True, tickCount=10),
                 ),  # Q indicates quantitative data
                 tooltip=[alt.Tooltip('Datetime:T', format="%Y-%m-%d %H:%M:%S", title="Time",),
                         alt.Tooltip('aggregate:Q', format="0.2f", title="Value")],
             ).properties(height=400).interactive()
 
-            st.altair_chart(temperature_chart_an, use_container_width=True)
+            st.altair_chart(water-level_chart_an, use_container_width=True)
 
 
 def operateFan():
