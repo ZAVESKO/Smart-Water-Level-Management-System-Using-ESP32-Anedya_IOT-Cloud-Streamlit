@@ -117,10 +117,10 @@ def drawDashboard():
     charts = st.columns(2, gap="small")
     with charts[0]:
         st.subheader(body="Water Level ", anchor=False)
-        if humidityData.empty:
+        if waterlevelData.empty:
             st.write("chart will be here")
         else:
-            humidity_chart_an = alt.Chart(data=humidityData).mark_area(
+            humidity_chart_an = alt.Chart(data=waterlevelData).mark_area(
                 line={'color': '#1fa2ff'},
                 color=alt.Gradient(
                     gradient='linear',
@@ -141,7 +141,7 @@ def drawDashboard():
                 y=alt.Y(
                     "aggregate:Q",
                     scale=alt.Scale(domain=[20, 60]),
-                    axis=alt.Axis(title="Humidity (%)", grid=True, tickCount=10),
+                    axis=alt.Axis(title="waterlevel (%)", grid=True, tickCount=10),
                 ),  # Q indicates quantitative data
                 tooltip=[alt.Tooltip('Datetime:T', format="%Y-%m-%d %H:%M:%S", title="Time",),
                         alt.Tooltip('aggregate:Q', format="0.2f", title="Value")],
