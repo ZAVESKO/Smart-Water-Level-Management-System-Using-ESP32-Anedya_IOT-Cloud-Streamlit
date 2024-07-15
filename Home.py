@@ -118,7 +118,7 @@ def drawDashboard():
     with charts[0]:
         st.subheader(body="Water Level ", anchor=False)
        
-            humidity_chart_an = alt.Chart(data=humidityData).mark_area(
+             humidity_chart_an = alt.Chart(data=humidityData).mark_area(
                 line={'color': '#1fa2ff'},
                 color=alt.Gradient(
                     gradient='linear',
@@ -139,7 +139,7 @@ def drawDashboard():
                 y=alt.Y(
                     "aggregate:Q",
                     scale=alt.Scale(domain=[20, 60]),
-                    axis=alt.Axis(title="waterlevel (%)", grid=True, tickCount=10),
+                    axis=alt.Axis(title="Humidity (%)", grid=True, tickCount=10),
                 ),  # Q indicates quantitative data
                 tooltip=[alt.Tooltip('Datetime:T', format="%Y-%m-%d %H:%M:%S", title="Time",),
                         alt.Tooltip('aggregate:Q', format="0.2f", title="Value")],
@@ -147,6 +147,7 @@ def drawDashboard():
 
             # Display the Altair chart using Streamlit
             st.altair_chart(humidity_chart_an, use_container_width=True)
+
 
     with charts[1]:
         st.subheader(body="Water Level", anchor=False)
