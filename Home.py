@@ -7,7 +7,7 @@ from utils.anedya import anedya_config
 from utils.anedya import anedya_sendCommand
 from utils.anedya import anedya_getValue
 from utils.anedya import anedya_setValue
-from utils.anedya import fetchwater-levelData
+from utils.anedya import fetchwaterlevelData
 
 nodeId = "NODE-ID"  # get it from anedya dashboard -> project -> node 
 apiKey = "YOUR-API-KEY"  # aneyda project apikey
