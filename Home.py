@@ -104,23 +104,16 @@ def drawDashboard():
 
     st.markdown("This dashboard provides live view of the Anedya's Office. Also allowing you to control the Light and Fan remotely!")
 
-    st.subheader(body="Current Status", anchor=False)
+    st.subheader(body="Current water level", anchor=False)
     cols = st.columns(2, gap="medium")
     with cols[0]:
         st.metric(label="Water Level", value=str(st.session_state.CurrentHumidity) + " %")
     with cols[1]:
-        st.metric(label="Water Level", value=str(st.session_state.CurrentTemperature) + "  °C")
+        st.metric(label="Water Level", value=str(st.session_state.CurrentTemperature) + "  %")
     # with cols[2]:
     #    st.metric(label="Refresh Count", value=count)
 
-    buttons = st.columns(2, gap="small")
-    with buttons[0]:
-        st.text("Control Fan:")
-        st.button(label=st.session_state.FanButtonText, on_click=operateFan)
-    with buttons[1]:
-        st.text("Control Light:")
-        st.button(label=st.session_state.LightButtonText, on_click=operateLight)
-
+  
     charts = st.columns(2, gap="small")
     with charts[0]:
         st.subheader(body="Water Level ", anchor=False)
