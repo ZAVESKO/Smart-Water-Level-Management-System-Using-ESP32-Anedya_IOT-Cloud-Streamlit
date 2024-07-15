@@ -117,10 +117,8 @@ def drawDashboard():
     charts = st.columns(2, gap="small")
     with charts[0]:
         st.subheader(body="Water Level ", anchor=False)
-        if waterlevelData.empty:
-            st.write("chart will be here")
-        else:
-            humidity_chart_an = alt.Chart(data=waterlevelData).mark_area(
+       
+            humidity_chart_an = alt.Chart(data=humidityData).mark_area(
                 line={'color': '#1fa2ff'},
                 color=alt.Gradient(
                     gradient='linear',
