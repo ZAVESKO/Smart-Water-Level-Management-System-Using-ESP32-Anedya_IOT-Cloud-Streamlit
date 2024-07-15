@@ -161,7 +161,7 @@ def drawDashboard():
         if water-levelData.empty:
             st.write("No Data Available!")
         else:
-            water-level_chart_an = alt.Chart(data=waterlevelData).mark_area(
+            waterlevel_chart_an = alt.Chart(data=waterlevelData).mark_area(
                 line={'color': '#1fa2ff'},
                 color=alt.Gradient(
                     gradient='linear',
