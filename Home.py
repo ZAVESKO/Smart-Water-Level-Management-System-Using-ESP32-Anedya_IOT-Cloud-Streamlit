@@ -39,12 +39,6 @@ def main():
     if "LoggedIn" not in st.session_state:
         st.session_state.LoggedIn = False
 
-    if "FanButtonText" not in st.session_state:
-        st.session_state.FanButtonText = "Turn Fan On!"
-
-    if "LightButtonText" not in st.session_state:
-        st.session_state.LightButtonText = "Turn Light On!"
-
     if "LightState" not in st.session_state:
         st.session_state.LightState = False
 
@@ -113,13 +107,6 @@ def drawDashboard():
     # with cols[2]:
     #    st.metric(label="Refresh Count", value=count)
 
-    buttons = st.columns(2, gap="small")
-    with buttons[0]:
-        st.text("Control Fan:")
-        st.button(label=st.session_state.FanButtonText, on_click=operateFan)
-    with buttons[1]:
-        st.text("Control Light:")
-        st.button(label=st.session_state.LightButtonText, on_click=operateLight)
 
     charts = st.columns(2, gap="small")
     with charts[0]:
@@ -148,7 +135,7 @@ def drawDashboard():
                 y=alt.Y(
                     "aggregate:Q",
                     scale=alt.Scale(domain=[20, 60]),
-                    axis=alt.Axis(title="Humidity (%)", grid=True, tickCount=10),
+                    axis=alt.Axis(title="Water level (cm)", grid=True, tickCount=10),
                 ),  # Q indicates quantitative data
                 tooltip=[alt.Tooltip('Datetime:T', format="%Y-%m-%d %H:%M:%S", title="Time",),
                         alt.Tooltip('aggregate:Q', format="0.2f", title="Value")],
@@ -184,7 +171,7 @@ def drawDashboard():
                     "aggregate:Q",
                     # scale=alt.Scale(domain=[0, 100]),
                     scale=alt.Scale(zero=False, domain=[10, 50]),
-                    axis=alt.Axis(title="Temperature (°C)", grid=True, tickCount=10),
+                    axis=alt.Axis(title="Previous water level (cm)", grid=True, tickCount=10),
                 ),  # Q indicates quantitative data
                 tooltip=[alt.Tooltip('Datetime:T', format="%Y-%m-%d %H:%M:%S", title="Time",),
                         alt.Tooltip('aggregate:Q', format="0.2f", title="Value")],
