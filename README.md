@@ -1,78 +1,76 @@
-[<img src="https://img.shields.io/badge/Anedya-Documentation-blue?style=for-the-badge">](https://docs.anedya.io?utm_source=github&utm_medium=link&utm_campaign=github-examples&utm_content=streamlit-dashboard)
+# Smart Water Level Management System
 
-# anedya-streamlit-dashboard-example
-An example dashboard developed in streamlit
+This project involves an ESP32-based Smart Water Level Management System that monitors the level of water (or any liquid) in a vessel. The system uses an ultrasonic sensor to measure the water level, an OLED display to show the level, and a buzzer for alerts. Additionally, the data is sent to servers for remote monitoring.
 
-<p align="center">
-    <img src="https://cdn.anedya.io/anedya_black_banner.png" alt="Logo">
-</p>
-The Anedya IoT cloud enables users to monitor and control IoT devices remotely. The dashboard displays real-time data on humidity and temperature, as well as providing control buttons to operate a fan and a light. The control buttons sync with real-time changes, reflecting the current state of the devices. 
+## Table of Contents
+1. [Project Overview](#project-overview)
+2. [Components](#components)
+3. [Circuit Diagram](#circuit-diagram)
+4. [Pin Configuration](#pin-configuration)
+5. [Installation and Setup](#installation-and-setup)
+6. [Code](#code)
+7. [Usage](#usage)
 
+## Project Overview
+The Smart Water Level Management System is designed to:
+- Measure the water level using an HC-SR04 ultrasonic sensor.
+- Display the water level on a 0.96 inch OLED display.
+- Alert when the water level falls below 5% or rises above 95% of the vessel's capacity using a buzzer.
+- Transmit the data to servers for remote monitoring.
 
-![Demo Dashboard](./docs/anedya_dashboard.png)
+## Components
+- ESP32 Development Module
+- HC-SR04 Ultrasonic Sensor
+- 0.96 inch OLED Display (SSD1306 controller)
+- Buzzer
 
-## Features
-- **User Authentication:** Basic login functionality.
-- **Live Data Visualization**: Real-time humidity and temperature charts using Altair.
-- **Device Control:** Buttons to turn the fan and light on and off, syncing with real-time changes.
-- **Automatic Data Refresh:** Auto-refresh functionality for live updates.
+## Circuit Diagram
+The Fritzing model of the circuit can be found [here](https://github.com/ZAVESKO/Smart-Water-Level-System-IOT-/blob/main/Circuit.fzz).
 
-## Setup and Configuration
-- **Node ID:** Obtain the Node ID from the Anedya dashboard by navigating to the project section and selecting the node.
-- **API Key:** Obtain the API key from the Anedya dashboard by navigating to the project -> APIKEY.
+## Pin Configuration
+### Buzzer
+- Positive (long leg) -> GPIO 19
+- Negative (short leg) -> GND
 
-## Integration with hardware
-Connect your Nodemcu with a DHT sensor and a relay module as per the [basic-home-automation with nodeMcu](https://github.com/anedyaio/anedya-example-nodemcu/tree/main/basic-home-automation), [basic-home-automation with pico](https://github.com/anedyaio/anedya-example-pico/tree/main/Thonny/basic-home-automation/pico) example. Upload the provided sketch from the repo to read sensor data and control devices.Follow the detailed instructions in the README.
+### HC-SR04 Ultrasonic Sensor
+- VCC -> 5V
+- GND -> GND
+- TRIG -> GPIO 5
+- ECHO -> GPIO 18
+
+### OLED Display
+- VCC -> 3.3V
+- GND -> GND
+- SCL -> GPIO 22
+- SDA -> GPIO 21
+
+## Installation and Setup
+1. **Clone the Repository:**
+    ```sh
+    git clone https://github.com/ZAVESKO/Smart-Water-Level-System-IOT-.git
+    ```
+2. **Open the Code:**
+    The complete code for the project is available [here](https://github.com/ZAVESKO/Smart-Water-Level-System-IOT-/blob/main/code.ino). Open the file in your preferred IDE.
+
+3. **Upload the Code:**
+    Ensure you have the required libraries installed. Connect your ESP32 to your computer and upload the code.
+
+## Code
+The code handles:
+- Reading the water level using the ultrasonic sensor.
+- Displaying the level on the OLED display.
+- Triggering the buzzer when the water level falls below 5% or rises above 95%.
+- Sending the data to servers for remote monitoring.
 
 ## Usage
+1. **Mount the Ultrasonic Sensor:**
+    Place the ultrasonic sensor at the top of the vessel to measure the water level accurately.
 
-### Running Locally
-1. Clone the Repository:
-Clone aneday-streamlit-dashboard-example repo from anedya github.
-```
-git clone https://github.com/anedyaio/anedya-streamlit-dashboard-example.git
-cd anedya-streamlit-dashboard-example
-```
-2. Install Dependencies:
-To ensure the application has all the necessary libraries, you'll need to install the dependencies listed in the requirements.txt file. This file contains a list of all the packages along with their versions that the app depends on.
-Here's how to install these dependencies:
-- Open a terminal or command prompt.
-- Navigate to the directory where you cloned the repository.
-- Run the following command to install the dependencies using pip:
-```
-pip install -r requirements.txt
-```
-This command reads the `requirements.txt` file and installs all the listed packages.
+2. **Power the System:**
+    Connect the ESP32 to a power source.
 
-3. Run the Streamlit App:
-Start the Streamlit server:
-```
-streamlit run Home.py
-```
-This will launch the dashboard in your default web browser.
+3. **Monitor the Display:**
+    The OLED display will show the current water level.
 
-### Hosting on Streamlit Cloud
-
-1. Fork the Repository:
-Fork this repository to your own GitHub account.
-2. Sign Up / Log In to Streamlit Cloud:
-Go to [Streamlit Cloud](https://streamlit.io/cloud) and sign in with your GitHub account.
-3. Create a New App:
-- Click on "New app".
-- Select your forked repository.
-- Set the branch to main (or the branch you want to deploy from).
-- Set the main file path to Home.py.
-4. Deploy:
-Click "Deploy" to launch your app on Streamlit Cloud.
-
-
-
-## License
-
-This project is licensed under the [MIT License](https://github.com/anedyaio/anedya-example-nodemcu/blob/main/LICENSE).
-
->[!TIP]
->For Anedya documentation, click [here](https://docs.anedya.io/?utm_source=github&utm_medium=link&utm_campaign=github-examples&utm_content=streamlit-dashboard).
->[!TIP]
-> For more information, visit [anedya.io](https://anedya.io/?utm_source=github&utm_medium=link&utm_campaign=github-examples&utm_content=streamlit-dashboard)
- 
+4. **Alerts:**
+    The buzzer will alert you if the water level is too low (below 5%) or too high (above 95%).
