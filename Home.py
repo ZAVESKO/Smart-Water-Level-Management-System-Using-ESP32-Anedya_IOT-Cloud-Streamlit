@@ -110,7 +110,7 @@ def drawDashboard():
         st.metric(label="Water Level", value=str(st.session_state.CurrentHumidity) + " cm")
     with cols[1]:
         st.metric(label="Water Level", value=str(st.session_state.CurrentTemperature) + " cm")
-     with charts[1]:
+
         st.subheader(body="Temperature", anchor=False)
         if temperatureData.empty:
             st.write("No Data Available!")
