@@ -68,7 +68,7 @@ def drawLogin():
     with cols[0]:
         pass
     with cols[1]:
-        st.title("Anedya Demo Dashboard", anchor=False)
+        st.title("Dashboard", anchor=False)
         username_inp = st.text_input("Username")
         password_inp = st.text_input("Password", type="password")
         submit_button = st.button(label="Submit")
