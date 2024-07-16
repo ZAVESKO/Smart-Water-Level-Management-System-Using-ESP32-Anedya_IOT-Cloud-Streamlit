@@ -102,14 +102,14 @@ def drawDashboard():
         st.session_state.LoggedIn = False
         st.rerun()
 
-    st.markdown("This dashboard provides live view of the Anedya's Office. Also allowing you to control the Light and Fan remotely!")
+    st.markdown("This dashboard provides water level data")
 
     st.subheader(body="Current Status", anchor=False)
     cols = st.columns(2, gap="medium")
     with cols[0]:
-        st.metric(label="Humidity", value=str(st.session_state.CurrentHumidity) + " %")
+        st.metric(label="Water level", value=str(st.session_state.CurrentHumidity) + " cm")
     with cols[1]:
-        st.metric(label="Temperature", value=str(st.session_state.CurrentTemperature) + "  °C")
+        st.metric(label="Previous Water level", value=str(st.session_state.CurrentTemperature) + "  cm")
     # with cols[2]:
     #    st.metric(label="Refresh Count", value=count)
 
@@ -125,7 +125,7 @@ def drawDashboard():
     with charts[0]:
         st.subheader(body="Humidity ", anchor=False)
         if humidityData.empty:
-            st.write("No Data Available!")
+            st.write("charts will be here!")
         else:
             humidity_chart_an = alt.Chart(data=humidityData).mark_area(
                 line={'color': '#1fa2ff'},
@@ -158,9 +158,9 @@ def drawDashboard():
             st.altair_chart(humidity_chart_an, use_container_width=True)
 
     with charts[1]:
-        st.subheader(body="Temperature", anchor=False)
+        st.subheader(body="Previous water level", anchor=False)
         if temperatureData.empty:
-            st.write("No Data Available!")
+            st.write("Charts will be here!")
         else:
             temperature_chart_an = alt.Chart(data=temperatureData).mark_area(
                 line={'color': '#1fa2ff'},
