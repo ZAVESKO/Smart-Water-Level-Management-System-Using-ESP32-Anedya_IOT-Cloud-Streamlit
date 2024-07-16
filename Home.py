@@ -61,7 +61,14 @@ def main():
         GetLightStatus()
 
         drawDashboard()
-
+def drawDashboard():
+    headercols = st.columns([1, 0.1, 0.1], gap="small")
+    with headercols[0]:
+        st.title("changes", anchor=False)
+    with headercols[1]:
+        st.button("Refresh")
+    with headercols[2]:
+        logout = st.button("Logout")
 
 def drawLogin():
     cols = st.columns([1, 0.8, 1], gap='small')
