@@ -86,7 +86,7 @@ def drawLogin():
 def drawDashboard():
     headercols = st.columns([1, 0.1, 0.1], gap="small")
     with headercols[0]:
-        st.title("Anedya Demo Dashboard", anchor=False)
+        st.title("DASHBOARD", anchor=False)
     with headercols[1]:
         st.button("Refresh")
     with headercols[2]:
