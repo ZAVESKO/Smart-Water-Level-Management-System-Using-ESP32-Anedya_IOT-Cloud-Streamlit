@@ -110,7 +110,7 @@ def drawDashboard():
 
     charts = st.columns(2, gap="small")
     with charts[0]:
-        st.subheader(body="Humidity ", anchor=False)
+        st.subheader(body="Water level", anchor=False)
         if humidityData.empty:
             st.write("charts will be here!")
         else:
