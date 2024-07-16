@@ -86,7 +86,7 @@ def drawLogin():
 def drawDashboard():
     headercols = st.columns([1, 0.1, 0.1], gap="small")
     with headercols[0]:
-        st.title("DASHBOARD", anchor=False)
+        st.title("changes", anchor=False)
     with headercols[1]:
         st.button("Refresh")
     with headercols[2]:
