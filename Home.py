@@ -68,7 +68,7 @@ def drawLogin():
     with cols[0]:
         pass
     with cols[1]:
-        st.title("Dashboard", )
+        st.title("Dashboard")
         username_inp = st.text_input("Username")
         password_inp = st.text_input("Password", type="password")
         submit_button = st.button(label="Submit")
@@ -83,14 +83,7 @@ def drawLogin():
         print()
 
 
-def drawDashboard():
-    headercols = st.columns([1, 0.1, 0.1], gap="small")
-    with headercols[0]:
-        st.title("changes", anchor=False)
-    with headercols[1]:
-        st.button("Refresh")
-    with headercols[2]:
-        logout = st.button("Logout")
+
 
     if logout:
         st.session_state.LoggedIn = False
